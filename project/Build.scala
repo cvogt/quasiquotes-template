@@ -1,10 +1,7 @@
 import sbt._
 import Keys._
 
-object QuasiQuotesBuild extends Build {
-
-  // sbt chooses default project according to lexographical
-  // order, so prefix before _tests make it a default
+object ProjectBuild extends Build {
 
   lazy val proj = Project(id = "project",
                           base = file(".")).dependsOn(quasiquotes)
@@ -13,7 +10,6 @@ object QuasiQuotesBuild extends Build {
 
   override lazy val settings = super.settings ++ Seq(
     scalaVersion := "2.10.0-RC1",
-    resolvers += Resolver.sonatypeRepo("snapshots"),
     libraryDependencies ++= Seq(
       "org.scala-lang" % "scala-reflect" % "2.10.0-RC1"
     )
